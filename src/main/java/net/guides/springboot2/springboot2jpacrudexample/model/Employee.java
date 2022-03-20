@@ -84,7 +84,7 @@ public void setEmailId(String emailId) {
 	this.emailId = emailId;
 }
 
-@Column(name = "address", nullable = false)
+@Column(name = "address", nullable = true)
 public String getAddress() {
 	return address;
 }

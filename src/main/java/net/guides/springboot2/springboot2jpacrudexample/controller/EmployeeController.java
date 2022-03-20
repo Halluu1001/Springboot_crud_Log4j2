@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-		
 
 import net.guides.springboot2.springboot2jpacrudexample.exception.ResourceNotFoundException;
 import net.guides.springboot2.springboot2jpacrudexample.model.Employee;
@@ -39,9 +38,12 @@ public class EmployeeController {
 	    @GetMapping("/employees")
 	    public List<Employee> getAllEmployees() {
 	    	
+	    	
 	    	List<Employee> employees = employeeRepository.findAll();
 	    	
-	    	LOGGER.info("From Log4j2 EmployeeController getAllEmployees() response{}", employees); 	
+	    	LOGGER.info("From Log4j EmployeeController getAllEmployees() response{}", employees); 	
+	    
+	    	//LOGGER.error("From Log4j EmployeeController. Message:", e.getMessage());
 	    	
 	        return employees;
 	    }
@@ -57,12 +59,15 @@ public class EmployeeController {
 	    @PostMapping("/employees")
 	    public List<Employee> createEmployee(@Valid @RequestBody List<Employee> employee) {
 	    	
-	    	LOGGER.info("From Log4j2 EmployeeController createEmployee() inputs{}", employee);
+	    	LOGGER.info("From Log4j EmployeeController createEmployee() inputs{}", employee);
 	    	
 	    	List<Employee> eList = employeeRepository.saveAll(employee);
 	    	
-	    	LOGGER.info("From Log4j2 EmployeeController createEmployee() response{}", employee);
-	        
+	    	
+	    	LOGGER.info("From Log4j EmployeeController createEmployee() response{}", employee);
+	    	
+	    	
+	    		LOGGER.error("From Log4j EmployeeController.  Message: {} ", employee );
 	    	return eList;
 	    }
 
